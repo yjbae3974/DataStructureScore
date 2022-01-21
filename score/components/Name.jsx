@@ -12,8 +12,17 @@ import {
   TreeSelect,
   Switch,
 } from "antd";
-import { addDoc, collection, doc, setDoc, updateDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  increment,
+  onSnapshot,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import { db } from "./api";
+import { async } from "@firebase/util";
 export default function Name(props) {
   const weekAndContent = [
     {
@@ -130,23 +139,63 @@ export default function Name(props) {
     },
   ];
   const [point, setpoint] = useState(false);
-  const Finished = async (name, week, cat) => {
-    //name에 이름 받아와주고, week에 주차 받아오고, cat에 발표인지 문제해결인지 받아주세요~
-    const presentation = doc(db, name, "pt");
-    const solve = doc(db, name, "solve");
+  const [each, setEach] = useState([]);
+  useEffect(() => {
+    const Each = onSnapshot(collection(db, props.name), (snapshot) => {
+      const EachArray = snapshot.docs.map((doc) => ({
+        week: doc.id,
+        ...doc.data(),
+      }));
+      setEach(EachArray);
+    });
+  }, [props.name]);
+  console.log(each);
+  const ForEach = async (name, week, cat) => {
+    const eachWeek = doc(db, name, week);
+    console.log(name, week, cat);
     if (cat === "발표") {
-      //발표면 pt라는 doc에 n주차 1 뜨게끔 했습니다.
-      await updateDoc(presentation, {
-        week: 1,
+      try {
+        await updateDoc(eachWeek, {
+          pt: 1,
+        });
+        console.log(`${name}'s pt point updated!`);
+      } catch (error) {
+        await setDoc(eachWeek, {
+          pt: 1,
+        });
+        console.log(`${name}'s pt point created!`);
+      }
+    } else if (cat === "문제 해결") {
+      try {
+        await updateDoc(eachWeek, {
+          solve: 1,
+        });
+        console.log(`${name}'s solve point updated!`);
+      } catch (error) {
+        await setDoc(eachWeek, {
+          solve: 1,
+        });
+        console.log(`${name}'s solve point created!`);
+      }
+    }
+  };
+  const ForTotal = async (name, cat, point) => {
+    const total = doc(db, "Total", name);
+    if (cat === "발표") {
+      await updateDoc(total, {
+        pt: increment(1),
+        solve: 0,
+        total: increment(1),
       });
     } else if (cat === "문제 해결") {
-      //문제 해결이면 solve라는 doc에 n주차 1 뜨게끔 했습니다.
-      await updateDoc(solve, {
-        week: 1,
+      await updateDoc(total, {
+        pt: 0,
+        solve: increment(1),
+        total: increment(1),
       });
     }
   };
-  useEffect(() => {}, []);
+
   return (
     <div>
       <Button
@@ -184,11 +233,14 @@ export default function Name(props) {
           <Form.Item label=":">
             <Button
               type="primary"
+              // onClick={() => {
+              //   alert("제출되었습니다");
+              //   setpoint(false);
+              // }}
               onClick={() => {
-                alert("제출되었습니다");
-                setpoint(false);
+                ForEach(props.name, "6주차", "문제 해결");
+                // ForTotal(props.name, "발표");
               }}
-              // onClick={() => Finished(props.name, week, cat)}
               // name은 props에서 받아왔고 form 입력값에 따라 weekt, category(문제/발표) 받아서 값 넣어주세요!
             >
               제출
