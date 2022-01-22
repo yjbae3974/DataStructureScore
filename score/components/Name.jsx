@@ -168,9 +168,10 @@ export default function Name(props) {
         await setDoc(eachWeek, {
           pt: 1,
         });
+        console.log(error);
         console.log(`${name}'s pt point created!`);
       }
-    } else if (cat === "문제 해결") {
+    } else if (cat === "문제해결") {
       try {
         await updateDoc(eachWeek, {
           solve: 1,
@@ -250,7 +251,9 @@ export default function Name(props) {
               // }}
               onClick={() => {
                 ForEach(props.name, nanWeek, category);
-                // ForTotal(props.name, "발표");
+                ForTotal(props.name, category);
+                alert("제출되었습니다");
+                setpoint(false);
               }}
               // name은 props에서 받아왔고 form 입력값에 따라 weekt, category(문제/발표) 받아서 값 넣어주세요!
             >
