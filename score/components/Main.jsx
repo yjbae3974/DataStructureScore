@@ -136,7 +136,7 @@ export default function Main() {
         if (target.solve) cnt++;
         targetData[week] = cnt;
       });
-      // console.log(targetData);
+
       setBae(targetData);
     });
     onSnapshot(collection(db, "조유림"), (snapshot) => {
@@ -152,7 +152,7 @@ export default function Main() {
         if (target.solve) cnt++;
         targetData[week] = cnt;
       });
-      // console.log(targetData);
+
       setUrim(targetData);
     });
     onSnapshot(collection(db, "김현빈"), (snapshot) => {
@@ -168,7 +168,7 @@ export default function Main() {
         if (target.solve) cnt++;
         targetData[week] = cnt;
       });
-      // console.log(targetData);
+
       setKim(targetData);
     });
     onSnapshot(collection(db, "신우현"), (snapshot) => {
@@ -184,7 +184,7 @@ export default function Main() {
         if (target.solve) cnt++;
         targetData[week] = cnt;
       });
-      // console.log(targetData);
+      
       setShin(targetData);
     });
     onSnapshot(collection(db, "엄지혜"), (snapshot) => {
@@ -200,7 +200,7 @@ export default function Main() {
         if (target.solve) cnt++;
         targetData[week] = cnt;
       });
-      // console.log(targetData);
+      
       setUm(targetData);
     });
     onSnapshot(collection(db, "윤재원"), (snapshot) => {
@@ -216,7 +216,7 @@ export default function Main() {
         if (target.solve) cnt++;
         targetData[week] = cnt;
       });
-      // console.log(targetData);
+      
       setYuen(targetData);
     });
     onSnapshot(collection(db, "이기훈"), (snapshot) => {
@@ -232,7 +232,7 @@ export default function Main() {
         if (target.solve) cnt++;
         targetData[week] = cnt;
       });
-      // console.log(targetData);
+      
       setKihun(targetData);
     });
     onSnapshot(collection(db, "이영일"), (snapshot) => {
@@ -248,7 +248,7 @@ export default function Main() {
         if (target.solve) cnt++;
         targetData[week] = cnt;
       });
-      // console.log(targetData);
+      
       setZero(targetData);
     });
     onSnapshot(collection(db, "이용준"), (snapshot) => {
@@ -264,7 +264,7 @@ export default function Main() {
         if (target.solve) cnt++;
         targetData[week] = cnt;
       });
-      // console.log(targetData);
+      
       setYong(targetData);
     });
     onSnapshot(collection(db, "정경근"), (snapshot) => {
@@ -280,7 +280,7 @@ export default function Main() {
         if (target.solve) cnt++;
         targetData[week] = cnt;
       });
-      // console.log(targetData);
+      
       setKyunKeun(targetData);
     });
     onSnapshot(collection(db, "정재윤"), (snapshot) => {
@@ -296,7 +296,7 @@ export default function Main() {
         if (target.solve) cnt++;
         targetData[week] = cnt;
       });
-      // console.log(targetData);
+      
       setJayun(targetData);
     });
     onSnapshot(collection(db, "최민재"), (snapshot) => {
@@ -312,7 +312,7 @@ export default function Main() {
         if (target.solve) cnt++;
         targetData[week] = cnt;
       });
-      // console.log(targetData);
+      
       setMinjae(targetData);
     });
     onSnapshot(collection(db, "황현호"), (snapshot) => {
@@ -328,7 +328,7 @@ export default function Main() {
         if (target.solve) cnt++;
         targetData[week] = cnt;
       });
-      // console.log(targetData);
+      
       setHwang(targetData);
     });
     onSnapshot(collection(db, "나두환"), (snapshot) => {
@@ -344,7 +344,7 @@ export default function Main() {
         if (target.solve) cnt++;
         targetData[week] = cnt;
       });
-      // console.log(targetData);
+      
       setNa(targetData);
     });
     onSnapshot(collection(db, "박병민"), (snapshot) => {
@@ -360,7 +360,7 @@ export default function Main() {
         if (target.solve) cnt++;
         targetData[week] = cnt;
       });
-      // console.log(targetData);
+      
       setPark(targetData);
     });
     onSnapshot(collection(db, "심하민"), (snapshot) => {
@@ -376,7 +376,7 @@ export default function Main() {
         if (target.solve) cnt++;
         targetData[week] = cnt;
       });
-      // console.log(targetData);
+      
       setShim(targetData);
     });
     onSnapshot(collection(db, "최민영"), (snapshot) => {
@@ -392,13 +392,11 @@ export default function Main() {
         if (target.solve) cnt++;
         targetData[week] = cnt;
       });
-      // console.log(targetData);
+      
       setMinyoung(targetData);
     });
   }, []);
-  console.log(bae);
-  console.log(urim);
-  console.log();
+
   return (
     <Container>
       <Table dataSource={finSource} columns={columns}></Table>

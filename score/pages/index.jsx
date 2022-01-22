@@ -30,16 +30,8 @@ export default function Home() {
   const [selectedKey, setselectedKey] = useState("main");
   const [name,setName] = useState("Main");
   const Names = ['배연준','조유림','김현빈','신우현','엄지혜','윤재원','이기훈','이영일','이용준','정경근','정재윤','최민재','황현호','나두환','박병민','심하민','최민영']
-  useEffect(() => {
-    console.log(name,selectedKey);
-  
-    
-  }, [name]);
-  // await setDoc(doc(db, "cities", "LA"), {
-  //   name: "Los Angeles",
-  //   state: "CA",
-  //   country: "USA"
-  // });
+
+
   return (
     <>
       <Layout style={{ minHeight: "100vh" }}>
@@ -57,7 +49,6 @@ export default function Home() {
                   )
                 })
               }
-              <Menu.Item key="20" onClick={()=>{setselectedKey("name");setName("test")}}>test</Menu.Item>
             </SubMenu>
           </Menu>
         </Sider>

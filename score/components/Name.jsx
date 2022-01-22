@@ -186,13 +186,8 @@ export default function Name(props) {
       setEach(EachArray);
     });
   }, [point,props.name]);
-  // useEffect(() => {
-  //   console.log(nanWeek, category, date, input);
-  // });
-  // console.log(each);
   const ForEach = async (name, week, cat, date, input) => {
     const eachWeek = doc(db, name, week);
-    // console.log(name, week, cat);
     if (cat === "발표") {
       try {
         await updateDoc(eachWeek, {
@@ -200,14 +195,12 @@ export default function Name(props) {
           date,
           "발표 설명": input,
         });
-        // console.log(`${name}'s pt point updated!`);
       } catch (error) {
         await setDoc(eachWeek, {
           pt: 1,
           date,
           "발표 설명": input,
         });
-        // console.log(`${name}'s pt point created!`);
       }
     } else if (cat === "문제해결") {
       try {
@@ -216,14 +209,12 @@ export default function Name(props) {
           date,
           "문제 설명": input,
         });
-        // console.log(`${name}'s solve point updated!`);
       } catch (error) {
         await setDoc(eachWeek, {
           solve: 1,
           date,
           "문제 설명": input,
         });
-        // console.log(`${name}'s solve point created!`);
       }
     }
   };
@@ -253,7 +244,6 @@ export default function Name(props) {
       ...each[i],
     });
   }
-  // console.log(dataSource)
   return (
     <div>
       <Button
@@ -299,17 +289,13 @@ export default function Name(props) {
           <Form.Item label=":">
             <Button
               type="primary"
-              // onClick={() => {
-              //   alert("제출되었습니다");
-              //   setpoint(false);
-              // }}
+             
               onClick={() => {
                 ForEach(props.name, nanWeek, category, date, input);
                 ForTotal(props.name, category, nanWeek);
                 alert("제출되었습니다");
                 setpoint(false);
               }}
-              // name은 props에서 받아왔고 form 입력값에 따라 weekt, category(문제/발표) 받아서 값 넣어주세요!
             >
               제출
             </Button>
