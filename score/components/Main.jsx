@@ -73,35 +73,299 @@ export default function Main() {
     },
   ];
   const [bae, setBae] = useState([]);
+  const [urim, setUrim] = useState([]);
+  const [kim, setKim] = useState([]);
+  const [shin, setShin] = useState([]);
+  const [um, setUm] = useState([]);
+  const [yuen, setYuen] = useState([]);
+  const [kihun, setKihun] = useState([]);
+  const [zero, setZero] = useState([]);
+  const [yong, setYong] = useState([]);
+  const [kyungkeun, setKyunKeun] = useState([]);
+  const [jayun, setJayun] = useState([]);
+  const [minjae, setMinjae] = useState([]);
+  const [hwang, setHwang] = useState([]);
+  const [na, setNa] = useState([]);
+  const [park, setPark] = useState([]);
+  const [minyoung, setMinyoung] = useState([]);
   const [shim, setShim] = useState([]);
-  const [each, setEach] = useState([]);
   useEffect(() => {
-    // const total = onSnapshot(collection(db, "Total"), (snapshot) => {
-    //   const totalArray = snapshot.docs.map((doc) => ({
-    //     name: doc.id,
-    //     ...doc.data(),
-    //   }));
-    //   setArray(totalArray);
-    // });
-    const bae = onSnapshot(collection(db, "배연준"), (snapshot) => {
+    onSnapshot(collection(db, "배연준"), (snapshot) => {
       const data = snapshot.docs.map((doc) => ({
         name: doc.id,
         ...doc.data(),
       }));
-      setBae(data);
+      const targetData = ["배연준", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      data.forEach((target) => {
+        let cnt = 0;
+        let week = +target.name[0];
+        if (target.pt) cnt++;
+        if (target.solve) cnt++;
+        targetData[week] = cnt;
+      });
+      // console.log(targetData);
+      setBae(targetData);
     });
-    const shim = onSnapshot(collection(db, "심하민"), (snapshot) => {
+    onSnapshot(collection(db, "조유림"), (snapshot) => {
       const data = snapshot.docs.map((doc) => ({
         name: doc.id,
         ...doc.data(),
       }));
-      setShim(data);
+      const targetData = ["조유림", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      data.forEach((target) => {
+        let cnt = 0;
+        let week = +target.name[0];
+        if (target.pt) cnt++;
+        if (target.solve) cnt++;
+        targetData[week] = cnt;
+      });
+      // console.log(targetData);
+      setUrim(targetData);
+    });
+    onSnapshot(collection(db, "김현빈"), (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        name: doc.id,
+        ...doc.data(),
+      }));
+      const targetData = ["김현빈", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      data.forEach((target) => {
+        let cnt = 0;
+        let week = +target.name[0];
+        if (target.pt) cnt++;
+        if (target.solve) cnt++;
+        targetData[week] = cnt;
+      });
+      // console.log(targetData);
+      setKim(targetData);
+    });
+    onSnapshot(collection(db, "신우현"), (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        name: doc.id,
+        ...doc.data(),
+      }));
+      const targetData = ["신우현", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      data.forEach((target) => {
+        let cnt = 0;
+        let week = +target.name[0];
+        if (target.pt) cnt++;
+        if (target.solve) cnt++;
+        targetData[week] = cnt;
+      });
+      // console.log(targetData);
+      setShin(targetData);
+    });
+    onSnapshot(collection(db, "엄지혜"), (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        name: doc.id,
+        ...doc.data(),
+      }));
+      const targetData = ["엄지혜", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      data.forEach((target) => {
+        let cnt = 0;
+        let week = +target.name[0];
+        if (target.pt) cnt++;
+        if (target.solve) cnt++;
+        targetData[week] = cnt;
+      });
+      // console.log(targetData);
+      setUm(targetData);
+    });
+    onSnapshot(collection(db, "윤재원"), (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        name: doc.id,
+        ...doc.data(),
+      }));
+      const targetData = ["윤재원", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      data.forEach((target) => {
+        let cnt = 0;
+        let week = +target.name[0];
+        if (target.pt) cnt++;
+        if (target.solve) cnt++;
+        targetData[week] = cnt;
+      });
+      // console.log(targetData);
+      setYuen(targetData);
+    });
+    onSnapshot(collection(db, "이기훈"), (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        name: doc.id,
+        ...doc.data(),
+      }));
+      const targetData = ["이기훈", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      data.forEach((target) => {
+        let cnt = 0;
+        let week = +target.name[0];
+        if (target.pt) cnt++;
+        if (target.solve) cnt++;
+        targetData[week] = cnt;
+      });
+      // console.log(targetData);
+      setKihun(targetData);
+    });
+    onSnapshot(collection(db, "이영일"), (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        name: doc.id,
+        ...doc.data(),
+      }));
+      const targetData = ["이영일", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      data.forEach((target) => {
+        let cnt = 0;
+        let week = +target.name[0];
+        if (target.pt) cnt++;
+        if (target.solve) cnt++;
+        targetData[week] = cnt;
+      });
+      // console.log(targetData);
+      setZero(targetData);
+    });
+    onSnapshot(collection(db, "이용준"), (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        name: doc.id,
+        ...doc.data(),
+      }));
+      const targetData = ["이용준", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      data.forEach((target) => {
+        let cnt = 0;
+        let week = +target.name[0];
+        if (target.pt) cnt++;
+        if (target.solve) cnt++;
+        targetData[week] = cnt;
+      });
+      // console.log(targetData);
+      setYong(targetData);
+    });
+    onSnapshot(collection(db, "정경근"), (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        name: doc.id,
+        ...doc.data(),
+      }));
+      const targetData = ["정경근", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      data.forEach((target) => {
+        let cnt = 0;
+        let week = +target.name[0];
+        if (target.pt) cnt++;
+        if (target.solve) cnt++;
+        targetData[week] = cnt;
+      });
+      // console.log(targetData);
+      setKyunKeun(targetData);
+    });
+    onSnapshot(collection(db, "정재윤"), (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        name: doc.id,
+        ...doc.data(),
+      }));
+      const targetData = ["정재윤", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      data.forEach((target) => {
+        let cnt = 0;
+        let week = +target.name[0];
+        if (target.pt) cnt++;
+        if (target.solve) cnt++;
+        targetData[week] = cnt;
+      });
+      // console.log(targetData);
+      setJayun(targetData);
+    });
+    onSnapshot(collection(db, "최민재"), (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        name: doc.id,
+        ...doc.data(),
+      }));
+      const targetData = ["최민재", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      data.forEach((target) => {
+        let cnt = 0;
+        let week = +target.name[0];
+        if (target.pt) cnt++;
+        if (target.solve) cnt++;
+        targetData[week] = cnt;
+      });
+      // console.log(targetData);
+      setMinjae(targetData);
+    });
+    onSnapshot(collection(db, "황현호"), (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        name: doc.id,
+        ...doc.data(),
+      }));
+      const targetData = ["황현호", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      data.forEach((target) => {
+        let cnt = 0;
+        let week = +target.name[0];
+        if (target.pt) cnt++;
+        if (target.solve) cnt++;
+        targetData[week] = cnt;
+      });
+      // console.log(targetData);
+      setHwang(targetData);
+    });
+    onSnapshot(collection(db, "나두환"), (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        name: doc.id,
+        ...doc.data(),
+      }));
+      const targetData = ["나두환", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      data.forEach((target) => {
+        let cnt = 0;
+        let week = +target.name[0];
+        if (target.pt) cnt++;
+        if (target.solve) cnt++;
+        targetData[week] = cnt;
+      });
+      // console.log(targetData);
+      setNa(targetData);
+    });
+    onSnapshot(collection(db, "박병민"), (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        name: doc.id,
+        ...doc.data(),
+      }));
+      const targetData = ["박병민", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      data.forEach((target) => {
+        let cnt = 0;
+        let week = +target.name[0];
+        if (target.pt) cnt++;
+        if (target.solve) cnt++;
+        targetData[week] = cnt;
+      });
+      // console.log(targetData);
+      setPark(targetData);
+    });
+    onSnapshot(collection(db, "심하민"), (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        name: doc.id,
+        ...doc.data(),
+      }));
+      const targetData = ["심하민", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      data.forEach((target) => {
+        let cnt = 0;
+        let week = +target.name[0];
+        if (target.pt) cnt++;
+        if (target.solve) cnt++;
+        targetData[week] = cnt;
+      });
+      // console.log(targetData);
+      setShim(targetData);
+    });
+    onSnapshot(collection(db, "최민영"), (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        name: doc.id,
+        ...doc.data(),
+      }));
+      const targetData = ["최민영", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      data.forEach((target) => {
+        let cnt = 0;
+        let week = +target.name[0];
+        if (target.pt) cnt++;
+        if (target.solve) cnt++;
+        targetData[week] = cnt;
+      });
+      // console.log(targetData);
+      setMinyoung(targetData);
     });
   }, []);
-  console.log("배연준 : ");
   console.log(bae);
-  console.log("심하민 : ");
-  console.log(shim);
+  console.log(urim);
+  console.log();
   return (
     <Container>
       <Table dataSource={dataSource} columns={columns}></Table>
