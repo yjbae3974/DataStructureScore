@@ -140,8 +140,8 @@ export default function Name(props) {
   ];
   const [point, setpoint] = useState(false);
   const [each, setEach] = useState([]);
-  const [nanWeek, setNanWeek] = useState('');
-  const [category, setCategory] = useState('');
+  const [nanWeek, setNanWeek] = useState("");
+  const [category, setCategory] = useState("");
   useEffect(() => {
     const Each = onSnapshot(collection(db, props.name), (snapshot) => {
       const EachArray = snapshot.docs.map((doc) => ({
@@ -151,6 +151,9 @@ export default function Name(props) {
       setEach(EachArray);
     });
   }, [props.name]);
+  useEffect(() => {
+    console.log(nanWeek, category);
+  });
   console.log(each);
   const ForEach = async (name, week, cat) => {
     const eachWeek = doc(db, name, week);
@@ -224,7 +227,13 @@ export default function Name(props) {
           size="large"
         >
           <Form.Item label="주차/내용 선택">
-            <Cascader options={weekAndContent} onChange={(value)=>{setNanWeek(value[0]);setCategory(value[1]);console.log(nanWeek,category)}} />
+            <Cascader
+              options={weekAndContent}
+              onChange={(value) => {
+                setNanWeek(value[0]);
+                setCategory(value[1]);
+              }}
+            />
           </Form.Item>
           <Form.Item label="날짜 선택">
             <DatePicker />
