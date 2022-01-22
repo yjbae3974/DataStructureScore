@@ -138,6 +138,33 @@ export default function Name(props) {
       ],
     },
   ];
+  const columns = [
+    {
+      title: "주차수",
+      dataIndex: "week",
+      key: "fistweek",
+    },
+    {
+      title: "발표",
+      dataIndex: "pt",
+      key: "2ndweek",
+    },
+    {
+      title: "문제해결",
+      dataIndex: "solve",
+      key: "2ndweek",
+    },
+    {
+      title: "날짜",
+      dataIndex: "date",
+      key: "2ndweek",
+    },
+    {
+      title: "비고",
+      dataIndex: "input",
+      key: "2ndweek",
+    },
+  ];
   const [point, setpoint] = useState(false);
   const [each, setEach] = useState([]);
   const [nanWeek, setNanWeek] = useState("");
@@ -214,7 +241,15 @@ export default function Name(props) {
       });
     }
   };
+  const dataSource = []
+  for(let i = 0;i<8;i++){
+    dataSource.push({
+      key: i,
+      ...each[i]
 
+    });
+  }
+  console.log(dataSource)
   return (
     <div>
       <Button
@@ -224,7 +259,7 @@ export default function Name(props) {
       >
         포인트 추가하기
       </Button>
-      <Table></Table>
+      <Table dataSource={each} columns={columns}></Table>
       {point ? (
         <Form
           style={{ marginTop: "30px" }}
