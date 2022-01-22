@@ -161,12 +161,12 @@ export default function Name(props) {
     },
     {
       title: "발표설명",
-      dataIndex: "input",
+      dataIndex: "발표 설명",
       key: "5",
     },
     {
       title: "문제설명",
-      dataIndex: "input",
+      dataIndex: "문제 설명",
       key: "6",
     },
   ];

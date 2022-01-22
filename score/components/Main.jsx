@@ -33,7 +33,7 @@ export default function Main() {
     },
     {
       title: "1주차",
-      dataIndex: "first",
+      dataIndex: "firstTot",
       key: "fistweek",
     },
     {
