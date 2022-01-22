@@ -180,13 +180,13 @@ export default function Name(props) {
       setEach(EachArray);
     });
   }, [point]);
-  useEffect(() => {
-    console.log(nanWeek, category, date, input);
-  });
-  console.log(each);
+  // useEffect(() => {
+  //   console.log(nanWeek, category, date, input);
+  // });
+  // console.log(each);
   const ForEach = async (name, week, cat, date, input) => {
     const eachWeek = doc(db, name, week);
-    console.log(name, week, cat);
+    // console.log(name, week, cat);
     if (cat === "발표") {
       try {
         await updateDoc(eachWeek, {
@@ -194,15 +194,14 @@ export default function Name(props) {
           date,
           "발표 설명": input,
         });
-        console.log(`${name}'s pt point updated!`);
+        // console.log(`${name}'s pt point updated!`);
       } catch (error) {
         await setDoc(eachWeek, {
           pt: 1,
           date,
           "발표 설명": input,
         });
-        console.log(error);
-        console.log(`${name}'s pt point created!`);
+        // console.log(`${name}'s pt point created!`);
       }
     } else if (cat === "문제해결") {
       try {
@@ -211,14 +210,14 @@ export default function Name(props) {
           date,
           "문제 설명": input,
         });
-        console.log(`${name}'s solve point updated!`);
+        // console.log(`${name}'s solve point updated!`);
       } catch (error) {
         await setDoc(eachWeek, {
           solve: 1,
           date,
           "문제 설명": input,
         });
-        console.log(`${name}'s solve point created!`);
+        // console.log(`${name}'s solve point created!`);
       }
     }
   };
@@ -241,15 +240,14 @@ export default function Name(props) {
       });
     }
   };
-  const dataSource = []
-  for(let i = 0;i<8;i++){
+  const dataSource = [];
+  for (let i = 0; i < 8; i++) {
     dataSource.push({
       key: i,
-      ...each[i]
-
+      ...each[i],
     });
   }
-  console.log(dataSource)
+  // console.log(dataSource)
   return (
     <div>
       <Button
