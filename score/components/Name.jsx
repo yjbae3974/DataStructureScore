@@ -192,7 +192,7 @@ export default function Name(props) {
         solve: 0,
         total: increment(1),
       });
-    } else if (cat === "문제 해결") {
+    } else if (cat === "문제해결") {
       await updateDoc(total, {
         pt: 0,
         solve: increment(1),
@@ -249,7 +249,7 @@ export default function Name(props) {
               //   setpoint(false);
               // }}
               onClick={() => {
-                ForEach(props.name, "6주차", "문제 해결");
+                ForEach(props.name, nanWeek, category);
                 // ForTotal(props.name, "발표");
               }}
               // name은 props에서 받아왔고 form 입력값에 따라 weekt, category(문제/발표) 받아서 값 넣어주세요!
