@@ -165,14 +165,14 @@ export default function Name(props) {
         await updateDoc(eachWeek, {
           pt: 1,
           date,
-          input,
+          "발표 설명": input,
         });
         console.log(`${name}'s pt point updated!`);
       } catch (error) {
         await setDoc(eachWeek, {
           pt: 1,
           date,
-          input,
+          "발표 설명": input,
         });
         console.log(error);
         console.log(`${name}'s pt point created!`);
@@ -182,14 +182,14 @@ export default function Name(props) {
         await updateDoc(eachWeek, {
           solve: 1,
           date,
-          input,
+          "문제 설명": input,
         });
         console.log(`${name}'s solve point updated!`);
       } catch (error) {
         await setDoc(eachWeek, {
           solve: 1,
           date,
-          input,
+          "문제 설명": input,
         });
         console.log(`${name}'s solve point created!`);
       }

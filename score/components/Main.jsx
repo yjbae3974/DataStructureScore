@@ -72,19 +72,36 @@ export default function Main() {
       key: "2ndweek",
     },
   ];
-  const [array, setArray] = useState([]);
+  const [bae, setBae] = useState([]);
+  const [shim, setShim] = useState([]);
   const [each, setEach] = useState([]);
   useEffect(() => {
-    const total = onSnapshot(collection(db, "Total"), (snapshot) => {
-      const totalArray = snapshot.docs.map((doc) => ({
+    // const total = onSnapshot(collection(db, "Total"), (snapshot) => {
+    //   const totalArray = snapshot.docs.map((doc) => ({
+    //     name: doc.id,
+    //     ...doc.data(),
+    //   }));
+    //   setArray(totalArray);
+    // });
+    const bae = onSnapshot(collection(db, "배연준"), (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
         name: doc.id,
         ...doc.data(),
       }));
-      setArray(totalArray);
+      setBae(data);
+    });
+    const shim = onSnapshot(collection(db, "심하민"), (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        name: doc.id,
+        ...doc.data(),
+      }));
+      setShim(data);
     });
   }, []);
-  console.log(array);
-  console.log(each);
+  console.log("배연준 : ");
+  console.log(bae);
+  console.log("심하민 : ");
+  console.log(shim);
   return (
     <Container>
       <Table dataSource={dataSource} columns={columns}></Table>
