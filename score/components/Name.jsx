@@ -142,27 +142,32 @@ export default function Name(props) {
     {
       title: "주차수",
       dataIndex: "week",
-      key: "fistweek",
+      key: "1",
     },
     {
       title: "발표",
       dataIndex: "pt",
-      key: "2ndweek",
+      key: "2",
     },
     {
       title: "문제해결",
       dataIndex: "solve",
-      key: "2ndweek",
+      key: "3",
     },
     {
       title: "날짜",
       dataIndex: "date",
-      key: "2ndweek",
+      key: "4",
     },
     {
-      title: "비고",
+      title: "발표설명",
       dataIndex: "input",
-      key: "2ndweek",
+      key: "5",
+    },
+    {
+      title: "문제설명",
+      dataIndex: "input",
+      key: "6",
     },
   ];
   const [point, setpoint] = useState(false);
