@@ -169,6 +169,8 @@ export default function Name(props) {
   const [each, setEach] = useState([]);
   const [nanWeek, setNanWeek] = useState("");
   const [category, setCategory] = useState("");
+  const [date, setDate] = useState("");
+  const [input, setInput] = useState("");
   useEffect(() => {
     const Each = onSnapshot(collection(db, props.name), (snapshot) => {
       const EachArray = snapshot.docs.map((doc) => ({
@@ -177,23 +179,27 @@ export default function Name(props) {
       }));
       setEach(EachArray);
     });
-  }, [props.name]);
+  }, [point]);
   useEffect(() => {
-    console.log(nanWeek, category);
+    console.log(nanWeek, category, date, input);
   });
   console.log(each);
-  const ForEach = async (name, week, cat) => {
+  const ForEach = async (name, week, cat, date, input) => {
     const eachWeek = doc(db, name, week);
     console.log(name, week, cat);
     if (cat === "발표") {
       try {
         await updateDoc(eachWeek, {
           pt: 1,
+          date,
+          input,
         });
         console.log(`${name}'s pt point updated!`);
       } catch (error) {
         await setDoc(eachWeek, {
           pt: 1,
+          date,
+          input,
         });
         console.log(error);
         console.log(`${name}'s pt point created!`);
@@ -202,29 +208,36 @@ export default function Name(props) {
       try {
         await updateDoc(eachWeek, {
           solve: 1,
+          date,
+          input,
         });
         console.log(`${name}'s solve point updated!`);
       } catch (error) {
         await setDoc(eachWeek, {
           solve: 1,
+          date,
+          input,
         });
         console.log(`${name}'s solve point created!`);
       }
     }
   };
-  const ForTotal = async (name, cat, point) => {
+  const ForTotal = async (name, cat, whatWeek) => {
     const total = doc(db, "Total", name);
+    setDoc(total, { merge: true });
     if (cat === "발표") {
       await updateDoc(total, {
         pt: increment(1),
         solve: 0,
         total: increment(1),
+        week: whatWeek,
       });
     } else if (cat === "문제해결") {
       await updateDoc(total, {
         pt: 0,
         solve: increment(1),
         total: increment(1),
+        week: whatWeek,
       });
     }
   };
@@ -272,10 +285,12 @@ export default function Name(props) {
             />
           </Form.Item>
           <Form.Item label="날짜 선택">
-            <DatePicker />
+            <DatePicker
+              onChange={(value) => setDate(value.format("YY-MM-DD"))}
+            />
           </Form.Item>
           <Form.Item label="Input">
-            <Input />
+            <Input onChange={(e) => setInput(e.target.value)} />
           </Form.Item>
           <Form.Item label=":">
             <Button
@@ -285,8 +300,8 @@ export default function Name(props) {
               //   setpoint(false);
               // }}
               onClick={() => {
-                ForEach(props.name, nanWeek, category);
-                ForTotal(props.name, category);
+                ForEach(props.name, nanWeek, category, date, input);
+                ForTotal(props.name, category, nanWeek);
                 alert("제출되었습니다");
                 setpoint(false);
               }}
