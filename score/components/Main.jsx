@@ -5,8 +5,7 @@ import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "./api";
 
 const Container = styled.div`
-  display: flex;
-  justify-content: center;
+
 `;
 
 export default function Main() {
@@ -28,12 +27,12 @@ export default function Main() {
   const columns = [
     {
       title: "이름",
-      dataIndex: "name",
+      dataIndex: "0",
       key: "name",
     },
     {
       title: "1주차",
-      dataIndex: "firstTot",
+      dataIndex: "1",
       key: "fistweek",
     },
     {
@@ -43,34 +42,39 @@ export default function Main() {
     },
     {
       title: "3주차",
-      dataIndex: "2ndweek",
+      dataIndex: "3",
       key: "2ndweek",
     },
     {
       title: "4주차",
-      dataIndex: "2ndweek",
+      dataIndex: "4",
       key: "2ndweek",
     },
     {
       title: "5주차",
-      dataIndex: "2ndweek",
+      dataIndex: "5",
       key: "2ndweek",
     },
     {
       title: "6주차",
-      dataIndex: "2ndweek",
+      dataIndex: "6",
       key: "2ndweek",
     },
     {
       title: "7주차",
-      dataIndex: "2ndweek",
+      dataIndex: "7",
       key: "2ndweek",
     },
     {
       title: "8주차",
-      dataIndex: "2ndweek",
+      dataIndex: "8",
       key: "2ndweek",
     },
+    {
+      title:"합계",
+      dataIndex: "sum",
+      key: "9"
+    }
   ];
   const [bae, setBae] = useState([]);
   const [urim, setUrim] = useState([]);
@@ -89,6 +93,35 @@ export default function Main() {
   const [park, setPark] = useState([]);
   const [minyoung, setMinyoung] = useState([]);
   const [shim, setShim] = useState([]);
+  const finSource = [
+    bae,
+    urim,
+    kim,
+    shin,
+    um,
+    yuen,
+    kihun,
+    zero,
+    yong,
+    kyungkeun,
+    jayun,
+    minjae,
+    hwang,
+    na,
+    park,
+    minyoung,
+    shim
+  ]
+  finSource.map((a,i)=>{
+    let count = 0;
+    a.map((a,i)=>{
+      if( i > 0){
+        count +=parseInt(a);
+      }
+      
+    })
+    a.sum = count;
+  })
   useEffect(() => {
     onSnapshot(collection(db, "배연준"), (snapshot) => {
       const data = snapshot.docs.map((doc) => ({
@@ -368,7 +401,7 @@ export default function Main() {
   console.log();
   return (
     <Container>
-      <Table dataSource={dataSource} columns={columns}></Table>
+      <Table dataSource={finSource} columns={columns}></Table>
     </Container>
   );
 }

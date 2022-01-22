@@ -176,6 +176,7 @@ export default function Name(props) {
   const [category, setCategory] = useState("");
   const [date, setDate] = useState("");
   const [input, setInput] = useState("");
+
   useEffect(() => {
     const Each = onSnapshot(collection(db, props.name), (snapshot) => {
       const EachArray = snapshot.docs.map((doc) => ({
@@ -184,7 +185,7 @@ export default function Name(props) {
       }));
       setEach(EachArray);
     });
-  }, [point]);
+  }, [point,props.name]);
   // useEffect(() => {
   //   console.log(nanWeek, category, date, input);
   // });
